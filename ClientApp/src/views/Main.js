@@ -141,7 +141,7 @@ class Main extends Component {
   handleEditSubmit = (event) => {
     event.preventDefault();
     let editID = this.state.editID;
-      axios.put(`https://api.bcbhtech.com:1313/${editID}`, {name: this.state.editUser.name, email: this.state.editUser.email, phone: this.state.editUser.phone, diagnosis: this.state.editUser.diagnosis}, 
+      axios.put(`https://api.bcbhtech.com:1313/users/${editID}`, {name: this.state.editUser.name, email: this.state.editUser.email, phone: this.state.editUser.phone, diagnosis: this.state.editUser.diagnosis}, 
       {headers: {
         "auth" : "2sx3SgceF2JK8DasoDYmngZ31SJaPmz2"
         }
@@ -168,7 +168,7 @@ class Main extends Component {
 
 
   handleDelete = (ID) => {
-      axios.delete(`https://api.bcbhtech.com:1313/${ID}`,
+      axios.delete(`https://api.bcbhtech.com:1313/users/${ID}`,
       {headers: {
         "auth" : "2sx3SgceF2JK8DasoDYmngZ31SJaPmz2"
         }
@@ -188,7 +188,7 @@ class Main extends Component {
     if (this.state.editing === true) {
       return (
         <div className="container">
-          <h1>I am the walrus</h1>
+          <h1>I am the walrus. Goo goo</h1>
           <ul>
             {list}
           </ul>
@@ -217,7 +217,7 @@ class Main extends Component {
     } else {
       return (
         <div className="container">
-          <h1>I am the walrus</h1>
+          <h1>I am the walrus. Goo goo</h1>
           <ul>
             {list}
           </ul>
