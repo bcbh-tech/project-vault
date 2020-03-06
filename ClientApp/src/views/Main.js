@@ -188,7 +188,7 @@ class Main extends Component {
     if (this.state.editing === true) {
       return (
         <div className="container">
-          <h1>I am the walrus. Goo goo ga choo. I am the egg man!</h1>
+          <h1>I am the walrus. Goo goo ga choo. I am the egg man.</h1>
           <ul>
             {list}
           </ul>
@@ -217,7 +217,7 @@ class Main extends Component {
     } else {
       return (
         <div className="container">
-          <h1>I am the walrus. Goo goo ga choo. I am the egg man!</h1>
+          <h1>I am the walrus. Goo goo ga choo. I am the egg man.</h1>
           <ul>
             {list}
           </ul>
