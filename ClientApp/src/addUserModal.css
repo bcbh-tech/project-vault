@@ -12,7 +12,7 @@
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
-.add-user-form {
+.add-user-form, .edit-user-form {
     background-color: #fefefe;
     margin: auto;
     padding: 20px;
