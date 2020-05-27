@@ -116,6 +116,7 @@ class Main extends Component {
   }
 
   handleEdit = (event) => {
+
     axios.get(
       `http://api.bcbhtech.com/users/${event.target.id}`,
       {headers: {
@@ -329,6 +330,23 @@ class Main extends Component {
     });
   }
 
+  ////////////////////////////
+  // Add/Edit User
+  ////////////////////////////
+
+  handleAddUser = (event) => {
+    console.log("It's working!! It's working!!!!")
+    // Open the modal
+    let addUserModal = document.getElementById("add-new-user-modal");
+    addUserModal.style.display = "block";
+  }
+
+  handleExitModal = (event) => {
+    console.log("get outta here!!!")
+    // Close the modal
+    let addUserModal = document.getElementById("add-new-user-modal");
+    addUserModal.style.display = "none";
+  }
 
   ////////////////////////////
   // Render app
@@ -349,28 +367,30 @@ class Main extends Component {
           <ul>
             {list}
           </ul>
-          <h2>Edit user</h2>
-          <form onSubmit={this.handleEditSubmit}>
-            <label>
-              Name:
-              <input type="text" name="name" value={this.state.editUser.name} onChange={this.handleEditChange} />
-            </label>
-            <label>
-              Email:
-              <input type="text" name="email" value={this.state.editUser.email} onChange={this.handleEditChange} />
-            </label>
-            <label>
-              Phone:
-              <input type="text" name="phone" value={this.state.editUser.phone} onChange={this.handleEditChange} />
-            </label>
-            <label>
-              Diagnosis:
-              <input type="text" name="diagnosis" value={this.state.editUser.diagnosis} onChange={this.handleEditChange} />
-            </label>
-            <input type="submit" value="Submit" />
-            <button onClick={this.handleClearForm}>Clear</button>
-            <button onClick={this.handleArchive}>Archive</button>
-          </form>
+          <div id="edit-user-modal" className="modal"> 
+            <h2>Edit user</h2>
+            <form className="edit-user-form" onSubmit={this.handleEditSubmit}>
+              <label>
+                Name:
+                <input type="text" name="name" value={this.state.editUser.name} onChange={this.handleEditChange} />
+              </label>
+              <label>
+                Email:
+                <input type="text" name="email" value={this.state.editUser.email} onChange={this.handleEditChange} />
+              </label>
+              <label>
+                Phone:
+                <input type="text" name="phone" value={this.state.editUser.phone} onChange={this.handleEditChange} />
+              </label>
+              <label>
+                Diagnosis:
+                <input type="text" name="diagnosis" value={this.state.editUser.diagnosis} onChange={this.handleEditChange} />
+              </label>
+              <input type="submit" value="Submit" />
+              <button onClick={this.handleClearForm}>Clear</button>
+              <button onClick={this.handleArchive}>Archive</button>
+            </form>
+          </div>
         </div>
       );
     } else {
@@ -410,26 +430,30 @@ class Main extends Component {
           <ul>
             {list}
           </ul>
-          <h2>Add a user</h2>
-          <form onSubmit={this.handleSubmit}>
-            <label>
-              Name:
-              <input type="text" name="name" value={this.state.formValue.name} onChange={this.handleChange} />
-            </label>
-            <label>
-              Email:
-              <input type="text" name="email" value={this.state.formValue.email} onChange={this.handleChange} />
-            </label>
-            <label>
-              Phone:
-              <input type="text" name="phone" value={this.state.formValue.phone} onChange={this.handleChange} />
-            </label>
-            <label>
-              Diagnosis:
-              <input type="text" name="diagnosis" value={this.state.formValue.diagnosis} onChange={this.handleChange} />
-            </label>
-            <input type="submit" value="Submit" />
-          </form>
+          <button id="addUserBtn" type="button" onClick={this.handleAddUser}>Add User</button>
+          <div id="add-new-user-modal" className="modal"> 
+            <form className="add-user-form" onSubmit={this.handleSubmit}>
+              <h2>Add a user</h2>
+              <label>
+                Name:
+                <input type="text" name="name" value={this.state.formValue.name} onChange={this.handleChange} />
+              </label>
+              <label>
+                Email:
+                <input type="text" name="email" value={this.state.formValue.email} onChange={this.handleChange} />
+              </label>
+              <label>
+                Phone:
+                <input type="text" name="phone" value={this.state.formValue.phone} onChange={this.handleChange} />
+              </label>
+              <label>
+                Diagnosis:
+                <input type="text" name="diagnosis" value={this.state.formValue.diagnosis} onChange={this.handleChange} />
+              </label>
+              <input type="submit" value="Submit" />
+              <button id="closeModalBtn" className="close" type="button" onClick={this.handleExitModal}>&times;</button>
+            </form>
+          </div>
         </div>
       );
     }

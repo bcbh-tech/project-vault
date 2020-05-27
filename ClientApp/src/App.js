@@ -15,6 +15,7 @@ import Data from "./views/Data";
 
 // styles
 import "./App.css";
+import "./addUserModal.css";
 
 // fontawesome
 import initFontAwesome from "./utils/initFontAwesome";
