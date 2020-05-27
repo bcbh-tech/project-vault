@@ -248,6 +248,8 @@ class Main extends Component {
     let dropdownTarget = document.getElementById('filter-static-dropdown');
     let eventValue = event.target.value;
     let eventLabel = dropdownTarget.options[dropdownTarget.selectedIndex].text;
+    console.log(eventValue);
+    console.log(eventLabel);
     let filteredList = updateStaticFilter(eventValue, eventLabel, staticFilteredList);
     this.setState({
       filteredData: filteredList,
@@ -257,6 +259,7 @@ class Main extends Component {
       dynamicFilteredData: [],
       globalFilter: ""
     });
+    // Clear dynamic filters:
     let dynamicFilterDropdowns = document.getElementsByClassName("dynamic-filter-dropdowns");
     let dynamicFilterInputs = document.getElementsByClassName("dynamic-filter-inputs");
     for (var i = 0; i < dynamicFilterDropdowns.length; i++) {
@@ -273,6 +276,13 @@ class Main extends Component {
     } else {
       document.getElementById("filter-dynamic-input-" + dropdownNumber).disabled = false;
     }
+    document.getElementById("filter-dynamic-input-" + dropdownNumber).value = "";
+    this.setState({
+      dynamicFilter: [{"All": ""}],
+      dynamicFilterActive: false,
+      dynamicFilteredData: [],
+      globalFilter: ""
+    });
   }
 
   handleDynamicFilter = (event) => {

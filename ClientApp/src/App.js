@@ -11,6 +11,7 @@ import { useAuth0 } from "./react-auth0-spa";
 import history from "./utils/history";
 import Main from "./views/Main";
 import Public from "./views/Public";
+import Data from "./views/Data";
 
 // styles
 import "./App.css";
@@ -39,6 +40,7 @@ const App = () => {
               <Route path="/" exact component={Public} />
             )}
             <PrivateRoute path="/profile" component={Profile} />
+            <PrivateRoute path="/data" component={Data} />
           </Switch>
         </Container>
         <Footer />
