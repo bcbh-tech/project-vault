@@ -335,18 +335,17 @@ class Main extends Component {
 
   addUser = (event) => {
     console.log("It's working!! It's working!!!!")
-    // Get the modal
+    // Open the modal
     let addUserModal = document.getElementById("add-new-user-modal");
-
-    // // Get the button that opens the modal
-    // let addUserBtn = document.getElementById("addUserBtn");
-
-    // // Get the <span> element that closes the modal
-    // let closeModal = document.getElementsByClassName("close")[0];
-
     addUserModal.style.display = "block";
-}
-  
+  }
+
+  exitModal = (event) => {
+    console.log("get outta here!!!")
+    // Close the modal
+    let addUserModal = document.getElementById("add-new-user-modal");
+    addUserModal.style.display = "none";
+  }
 
   ////////////////////////////
   // Render app
@@ -428,10 +427,10 @@ class Main extends Component {
           <ul>
             {list}
           </ul>
-          <h2>Add a user</h2>
           <button id="addUserBtn" type="button" onClick={this.addUser}>Add User</button>
           <div id="add-new-user-modal" className="modal"> 
-            <form onSubmit={this.handleSubmit}>
+            <form className="add-user-form" onSubmit={this.handleSubmit}>
+              <h2>Add a user</h2>
               <label>
                 Name:
                 <input type="text" name="name" value={this.state.formValue.name} onChange={this.handleChange} />
@@ -449,7 +448,7 @@ class Main extends Component {
                 <input type="text" name="diagnosis" value={this.state.formValue.diagnosis} onChange={this.handleChange} />
               </label>
               <input type="submit" value="Submit" />
-              <span className="close">&times;</span>
+              <button className="close" type="button" onClick={this.exitModal}>&times;</button>
             </form>
           </div>
         </div>
