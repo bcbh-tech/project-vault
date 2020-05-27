@@ -369,7 +369,7 @@ class Main extends Component {
           </ul>
           <div id="edit-user-modal" className="modal"> 
             <h2>Edit user</h2>
-            <form onSubmit={this.handleEditSubmit}>
+            <form className="edit-user-form" onSubmit={this.handleEditSubmit}>
               <label>
                 Name:
                 <input type="text" name="name" value={this.state.editUser.name} onChange={this.handleEditChange} />
