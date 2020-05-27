@@ -329,6 +329,13 @@ class Main extends Component {
     });
   }
 
+  ////////////////////////////
+  // Add User
+  ////////////////////////////
+
+  addUser = (event) => {
+    console.log("It's working!! It's working!!!!")
+  }
 
   ////////////////////////////
   // Render app
@@ -411,6 +418,8 @@ class Main extends Component {
             {list}
           </ul>
           <h2>Add a user</h2>
+          
+          <button type="button" onClick={this.addUser}>Add User</button> 
           <form onSubmit={this.handleSubmit}>
             <label>
               Name:
