@@ -335,7 +335,18 @@ class Main extends Component {
 
   addUser = (event) => {
     console.log("It's working!! It's working!!!!")
-  }
+    // Get the modal
+    let addUserModal = document.getElementById("add-new-user-modal");
+
+    // // Get the button that opens the modal
+    // let addUserBtn = document.getElementById("addUserBtn");
+
+    // // Get the <span> element that closes the modal
+    // let closeModal = document.getElementsByClassName("close")[0];
+
+    addUserModal.style.display = "block";
+}
+  
 
   ////////////////////////////
   // Render app
@@ -418,27 +429,29 @@ class Main extends Component {
             {list}
           </ul>
           <h2>Add a user</h2>
-          
-          <button type="button" onClick={this.addUser}>Add User</button> 
-          <form onSubmit={this.handleSubmit}>
-            <label>
-              Name:
-              <input type="text" name="name" value={this.state.formValue.name} onChange={this.handleChange} />
-            </label>
-            <label>
-              Email:
-              <input type="text" name="email" value={this.state.formValue.email} onChange={this.handleChange} />
-            </label>
-            <label>
-              Phone:
-              <input type="text" name="phone" value={this.state.formValue.phone} onChange={this.handleChange} />
-            </label>
-            <label>
-              Diagnosis:
-              <input type="text" name="diagnosis" value={this.state.formValue.diagnosis} onChange={this.handleChange} />
-            </label>
-            <input type="submit" value="Submit" />
-          </form>
+          <button id="addUserBtn" type="button" onClick={this.addUser}>Add User</button>
+          <div id="add-new-user-modal" className="modal"> 
+            <form onSubmit={this.handleSubmit}>
+              <label>
+                Name:
+                <input type="text" name="name" value={this.state.formValue.name} onChange={this.handleChange} />
+              </label>
+              <label>
+                Email:
+                <input type="text" name="email" value={this.state.formValue.email} onChange={this.handleChange} />
+              </label>
+              <label>
+                Phone:
+                <input type="text" name="phone" value={this.state.formValue.phone} onChange={this.handleChange} />
+              </label>
+              <label>
+                Diagnosis:
+                <input type="text" name="diagnosis" value={this.state.formValue.diagnosis} onChange={this.handleChange} />
+              </label>
+              <input type="submit" value="Submit" />
+              <span className="close">&times;</span>
+            </form>
+          </div>
         </div>
       );
     }
