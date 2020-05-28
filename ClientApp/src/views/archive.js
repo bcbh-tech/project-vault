@@ -12,21 +12,23 @@ class Archive extends Component {
   state = {
     data: [],
     filteredData: [],
-    dataList: []
+    dataList: [],
+    archiveLimit: 10,
+    archiveOffset: 0
   }
 
 ////////////////////////////
 // Load data
 ////////////////////////////
 
-  refreshList() {
+  refreshList(archiveLimit, archiveOffset) {
     setTimeout(() => {
       axios.get(
         'http://api.bcbhtech.com/users/archive',
         {headers: {
             "auth" : "2sx3SgceF2JK8DasoDYmngZ31SJaPmz2",
-            "limit": 1,
-            "offset": 0
+            "limit": archiveLimit,
+            "offset": archiveOffset
           }
         }
       )
@@ -43,9 +45,28 @@ class Archive extends Component {
   }
 
   componentDidMount() {
-    this.refreshList();
+    this.refreshList(this.state.archiveLimit, this.state.archiveOffset);
   }
 
+////////////////////////////
+// Pagination Functions
+////////////////////////////
+
+handleNextBtn = () => {
+  let offset = this.state.archiveOffset + 10;
+  this.refreshList(this.state.archiveLimit, offset);
+  this.setState({
+    archiveOffset: offset
+  });
+}
+
+handlePrevBtn = () => {
+  let offset = this.state.archiveOffset >= 9 ? this.state.archiveOffset - 10 : 0;
+  this.refreshList(this.state.archiveLimit, offset);
+  this.setState({
+    archiveOffset: offset
+  });
+}
 
 ////////////////////////////
 // Render app
@@ -60,6 +81,10 @@ class Archive extends Component {
        <ul>
            {list}
        </ul>
+       {this.state.archiveOffset >= 9 && (
+         <button onClick={this.handlePrevBtn}>Previous</button>
+       )}
+       <button onClick={this.handleNextBtn}>Next</button>
     </div>
     );
 }
