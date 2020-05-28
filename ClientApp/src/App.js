@@ -12,6 +12,7 @@ import history from "./utils/history";
 import Main from "./views/Main";
 import Public from "./views/Public";
 import Data from "./views/Data";
+import Archive from "./views/Archive";
 
 // styles
 import "./App.css";
@@ -42,6 +43,7 @@ const App = () => {
             )}
             <PrivateRoute path="/profile" component={Profile} />
             <PrivateRoute path="/data" component={Data} />
+            <PrivateRoute path="/archive" component={Archive} />
           </Switch>
         </Container>
         <Footer />
